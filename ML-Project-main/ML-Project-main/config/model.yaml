@@ -1,0 +1,24 @@
+grid_search: ##Gridsearch allows us to try with different parameters and it returns best estimator and best parameter
+  class: GridSearchCV ## It is mainly use for hyperparameter tunning
+  module: sklearn.model_selection
+  params:
+    cv: 5 ##CV=cross validation fold--4 -training and 1- testing
+    verbose: 2 ##use for printing the information
+model_selection: ##we can select any no. of model we want like module_0,module_1...etc..and accordingly their params(constructor)
+  module_0:
+    class: LinearRegression
+    module: sklearn.linear_model
+    params:
+      fit_intercept: true
+    search_param_grid:
+      fit_intercept:
+      - true
+      - false
+  module_1:
+    class: RandomForestRegressor
+    module: sklearn.ensemble
+    params:
+      min_samples_leaf: 3 ##while training we required atleast 3 nodes
+    search_param_grid:
+      min_samples_leaf:
+      - 6
